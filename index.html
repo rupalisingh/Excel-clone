@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Clone</title>
+    <link rel='icon' href="Excel-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <div class="menu-bar">
+        <div class="excel-text">Excel</div>
+        <div class="menu-icon">
+            <i class="far fa-file-excel fa-2x"></i>
+            <i class="fas fa-folder-open fa-2x"></i>
+            <i class="fas fa-file-download fa-2x"></i>
+        </div>
+    </div>
+    <div class="toolbar">
+        <div class="text-formatting">
+            <select id="input-font" class="input">
+                <option value="Times New Roman" STYLE="font-family : Times New Roman;
+                font-size : 10pt" selected="selected">
+                    Times New Roman
+                </option>
+                <option value="Arial" STYLE="font-family : Arial;
+                font-size : 12pt">Arial</option>
+                <option value="fantasy" STYLE="font-family : fantasy;
+                font-size : 10pt">Fantasy</option>
+                <option value="cursive" STYLE="font-family : cursive;
+                font-size : 10pt">cursive</option>
+            </select>
+            <select id="font-size">
+                <option value="11" selected="selected">11</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+        <div class="biu">
+            <i class="fas fa-bold"></i>
+            <i class="fas fa-italic"></i>
+            <i class="fas fa-underline"></i>
+        </div>
+        <div class="color-picker">
+            <div class="coloricon fill">
+                <i class="fas fa-fill-drip"></i>
+                <input type="color" id="fillcolor" name="favcolor" value="#ffffff">
+            </div>
+            <div class="coloricon text">
+                <i class="fas fa-font"></i>
+                <input type="color" id="textcolor" name="favcolor" value="#000000">
+            </div>
+        </div>
+        <div class="alignment">
+            <i class="fas fa-align-left" id = "left"></i>
+            <i class="fas fa-align-center" id = "center"></i>
+            <i class="fas fa-align-right" id = "right"></i>
+        </div>
+    </div>
+    <div class="formula-container">
+        <input type="text" id="address" class="address-bar" readonly>
+        <input type="text" id="formula" class="formula-bar">
+    </div>
+    <div class="grid-container">
+        <div class="block"></div>
+        <div class="top-row"></div>
+        <div class="left-col"></div>
+        <div class="inside-grid"></div>
+    </div>
+    <div class="add-sheet-container">
+        <i class="fas fa-plus"></i>
+        <div class="sheet-list">
+            <div class="sheet active-sheet">Sheet 1</div>            
+        </div>
+
+    </div>
+
+    <script src = "localdb.js"></script>
+    <script src ="grid.js"></script>
+    <script src ="formatting.js"></script>
+    <script src ="sheet.js"></script>
+    <script src = "formula.js"></script>
+</body>
+ 
+</html>
