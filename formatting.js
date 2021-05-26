@@ -184,6 +184,8 @@ for (let i = 0; i < Allcells.length; i++) {
         let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
         let cellobj = sheetdB[rid][cid]
         cellobj.value = cell.innerText
+        cellobj.parent = address
+        UpdateChildrenValue(address)
     })
 
     Allcells[i].addEventListener("keydown", function (e) {

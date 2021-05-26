@@ -15,6 +15,7 @@ function currSheetDb() {
                 fillcolor : "transparent",
                 value: "",
                 formula: "",
+                parent : "",
                 children : []
             }
             row.push(cell)

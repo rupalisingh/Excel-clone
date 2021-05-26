@@ -1,12 +1,12 @@
 
 formula.addEventListener("keydown", function (e) {
-    let cellobj = sheetdB[0][0]
     if (e.key == "Enter" && formula.value != "") {
-        cellobj.formula = formula.value
         let exp = formula.value
         let resultaddress = addressBar.value                              //children
-        let res = solve(exp,resultaddress)
+        let res = solve(exp,resultaddress, "")
         let { cid, rid } = getRIdCIdfromAddress(resultaddress)
+        let resultcellObj = sheetdB[rid][cid]
+        resultcellObj.formula = exp
         setUIformula(res, rid, cid)
         console.log(worksheetdB)
     }
@@ -15,7 +15,7 @@ formula.addEventListener("keydown", function (e) {
 })
 
 
-function solve(exp, resultaddress) {
+function solve(exp, resultaddress, parentaddress) {
     let operand = []
     let operator = []
     exp = exp.replace(/ /g, "")
@@ -38,7 +38,7 @@ function solve(exp, resultaddress) {
                 str = ""
             }
             let op = operator.pop()
-            evaluate(op, operand, resultaddress)
+            evaluate(op, operand, resultaddress, parentaddress)
         } else {
             if (isOperator == false) {
                 str = str + ch
@@ -48,29 +48,32 @@ function solve(exp, resultaddress) {
  
     while (operand.length > 1) {
         let remop = operator.pop()
-        evaluate(remop, operand, resultaddress)
+        evaluate(remop, operand, resultaddress, parentaddress)
     }
 
     return operand.pop()
 }
 
-function evaluate(op, operand, resultaddress) {
+function evaluate(op, operand, resultaddress, parentaddress) {
     let v1 = operand.pop()
     let v2 = operand.pop()
-    console.log(v1, v2)
 
     if (isNaN(Number(v1) / 100) == true) {
         let { cid, rid } = getRIdCIdfromAddress(v1)
         cellobj = sheetdB[rid][cid]
         v1 = cellobj.value
-        ParentChildrelation(resultaddress, rid, cid)
+        if(resultaddress != parentaddress){
+            ParentChildrelation(resultaddress, rid, cid)
+        }
     }
 
     if (isNaN(Number(v2) / 100) == true) {
         let { cid, rid } = getRIdCIdfromAddress(v2)
         cellobj = sheetdB[rid][cid]
         v2 = cellobj.value
-        ParentChildrelation(resultaddress, rid, cid)
+        if(resultaddress != parentaddress){
+            ParentChildrelation(resultaddress, rid, cid)
+        }
 
     }
 
@@ -87,7 +90,6 @@ function evaluate(op, operand, resultaddress) {
     }
 }
 
-
 function setUIformula(res, rid, cid) {
     document.querySelector(`.row > .col[rid="${rid}"][cid="${cid}"]`).innerText = res
     let formcellobj = sheetdB[rid][cid]
@@ -98,4 +100,24 @@ function setUIformula(res, rid, cid) {
 function ParentChildrelation(resultaddress, parentRid, parentCid){
     cellobj = sheetdB[parentRid][parentCid]
     cellobj.children.push(resultaddress)
+} 
+
+function UpdateChildrenValue(changedvalAddress){
+    try{
+        let {cid, rid} = getRIdCIdfromAddress(changedvalAddress)
+        changedcellObj = sheetdB[rid][cid]
+        let children = changedcellObj.children
+        for(let i = 0; i < children.length; i++){
+            let {cid, rid} = getRIdCIdfromAddress(children[i])
+            childrencellobj = sheetdB[rid][cid]
+            let formula = childrencellobj.formula
+            let result = solve(formula, children[i], childrencellobj.parent)
+            childrencellobj.value = result
+            setUIformula(result, rid,cid)
+            UpdateChildrenValue(children[i])
+        }
+    }catch(e) {
+        console.log("error")
+    }
+    
 }
