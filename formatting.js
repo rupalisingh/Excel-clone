@@ -32,8 +32,7 @@ leftalign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.textAlign = "left"
-
+    cell.style.backgroundColor = "red"
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
     })
@@ -47,7 +46,7 @@ rightalign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.textAlign = "right"
+    cell.style.backgroundColor = "green"
 
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
@@ -62,7 +61,7 @@ centeralign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.textAlign = "center"
+    cell.style.backgroundColor = "blue"
 
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
@@ -190,10 +189,10 @@ for (let i = 0; i < Allcells.length; i++) {
     })
 
     Allcells[i].addEventListener("keydown", function (e) {
+        let address = curraddress.value;
         let { cid, rid } = getRIdCIdfromAddress(address);
         let cellsel = e.currentTarget
         let height = cellsel.scrollHeight;
-        let address = curraddress.value;
         let entirerow = document.querySelectorAll(".inside-grid .row")[rid];
         entirerow.style.height = height + "px";
         let leftcol = document.querySelectorAll(".left-col .row")[rid];
