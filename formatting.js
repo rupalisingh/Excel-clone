@@ -186,25 +186,40 @@ for (let i = 0; i < Allcells.length; i++) {
         cellobj.value = cell.innerText
         cellobj.parent = address
         UpdateChildrenValue(address)
+        
     })
 
     Allcells[i].addEventListener("keydown", function (e) {
+        let { cid, rid } = getRIdCIdfromAddress(address);
         let cellsel = e.currentTarget
         let height = cellsel.scrollHeight;
         let address = curraddress.value;
-        let { cid, rid } = getRIdCIdfromAddress(address);
         let entirerow = document.querySelectorAll(".inside-grid .row")[rid];
         entirerow.style.height = height + "px";
         let leftcol = document.querySelectorAll(".left-col .row")[rid];
         leftcol.style.height = height + "px";
 
-        let obj = Allcells[i].getBoundingClientRect()
-        let theight = obj.height
+    })
 
-
+    Allcells[i].addEventListener("click", function() {
+        console.log('clicked')
+        let address = curraddress.value;
+        let { cid, rid } = getRIdCIdfromAddress(address);
+        setFormulaBarUI(rid, cid)
     })
 }
 
+
+function setFormulaBarUI(rid,cid) {
+    let formulabar = document.querySelector(".formula-bar")
+    let formulacellobj = sheetdB[rid][cid]
+    if(formulacellobj.formula != ""){
+        console.log(formulacellobj)
+        formulabar.value = formulacellobj.formula
+    }else{
+        formulabar.value = ""
+    }
+}
 
 
 function getRIdCIdfromAddress(address) {

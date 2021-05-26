@@ -19,25 +19,18 @@ body{
 }
 
 .menu-icon{
+    min-width : 300px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    font-weight: 900;
-    font-size: 20px;
+    font-size: 15px;
     
 }
 .menu-icon > *{
-    min-width: 100px;
-    min-height: 30px;
-    font-size: 18px;
-    margin-left: 20px;
-    font-family: "Lucida Console", "Courier New", monospace;
     background-color: rgb(23, 155, 23);
-    border : 1px solid white;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(188, 255, 192);
     color: whitesmoke;
+
 }
 
 .excel-text{

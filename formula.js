@@ -94,6 +94,7 @@ function setUIformula(res, rid, cid) {
     document.querySelector(`.row > .col[rid="${rid}"][cid="${cid}"]`).innerText = res
     let formcellobj = sheetdB[rid][cid]
     formcellobj.value = res
+    
 
 }
 
@@ -121,3 +122,4 @@ function UpdateChildrenValue(changedvalAddress){
     }
     
 }
+
