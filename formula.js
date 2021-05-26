@@ -4,18 +4,18 @@ formula.addEventListener("keydown", function (e) {
     if (e.key == "Enter" && formula.value != "") {
         cellobj.formula = formula.value
         let exp = formula.value
-        let res = solve(exp)
-        let resultaddress = addressBar.value
+        let resultaddress = addressBar.value                              //children
+        let res = solve(exp,resultaddress)
         let { cid, rid } = getRIdCIdfromAddress(resultaddress)
         setUIformula(res, rid, cid)
+        console.log(worksheetdB)
     }
 
 
 })
 
 
-
-function solve(exp) {
+function solve(exp, resultaddress) {
     let operand = []
     let operator = []
     exp = exp.replace(/ /g, "")
@@ -38,23 +38,23 @@ function solve(exp) {
                 str = ""
             }
             let op = operator.pop()
-            evaluate(op, operand)
+            evaluate(op, operand, resultaddress)
         } else {
             if (isOperator == false) {
                 str = str + ch
             }
         }
     }
-
+ 
     while (operand.length > 1) {
         let remop = operator.pop()
-        evaluate(remop, operand)
+        evaluate(remop, operand, resultaddress)
     }
 
     return operand.pop()
 }
 
-function evaluate(op, operand) {
+function evaluate(op, operand, resultaddress) {
     let v1 = operand.pop()
     let v2 = operand.pop()
     console.log(v1, v2)
@@ -63,12 +63,15 @@ function evaluate(op, operand) {
         let { cid, rid } = getRIdCIdfromAddress(v1)
         cellobj = sheetdB[rid][cid]
         v1 = cellobj.value
+        ParentChildrelation(resultaddress, rid, cid)
     }
 
     if (isNaN(Number(v2) / 100) == true) {
         let { cid, rid } = getRIdCIdfromAddress(v2)
         cellobj = sheetdB[rid][cid]
         v2 = cellobj.value
+        ParentChildrelation(resultaddress, rid, cid)
+
     }
 
     v1 = Number(v1)
@@ -90,4 +93,9 @@ function setUIformula(res, rid, cid) {
     let formcellobj = sheetdB[rid][cid]
     formcellobj.value = res
 
+}
+
+function ParentChildrelation(resultaddress, parentRid, parentCid){
+    cellobj = sheetdB[parentRid][parentCid]
+    cellobj.children.push(resultaddress)
 }
