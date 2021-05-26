@@ -243,7 +243,7 @@ input[type="color"] {
     background-color: rgb(173, 173, 173);
     border: 1.5px solid darkgray;
     width: 24px;
-    box-shadow: 1px 1px 1px 1px;
+    color:rgb(23, 155, 23)
 }
 
 .active-sheet{
