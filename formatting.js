@@ -34,11 +34,11 @@ leftalign.addEventListener("click", function () {
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
     cell.style.textAlign = "left"
 
-    alignarr.forEach(function(align){
+    alignarr.forEach(function (align) {
         align.classList.remove("active-button")
     })
 
-    if(!leftalign.classList[2]){
+    if (!leftalign.classList[2]) {
         leftalign.classList.add("active-button")
     }
 })
@@ -49,11 +49,11 @@ rightalign.addEventListener("click", function () {
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
     cell.style.textAlign = "right"
 
-    alignarr.forEach(function(align){
+    alignarr.forEach(function (align) {
         align.classList.remove("active-button")
     })
 
-    if(!rightalign.classList[2]){
+    if (!rightalign.classList[2]) {
         rightalign.classList.add("active-button")
     }
 })
@@ -64,11 +64,11 @@ centeralign.addEventListener("click", function () {
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
     cell.style.textAlign = "center"
 
-    alignarr.forEach(function(align){
+    alignarr.forEach(function (align) {
         align.classList.remove("active-button")
     })
 
-    if(!centeralign.classList[2]){
+    if (!centeralign.classList[2]) {
         centeralign.classList.add("active-button")
     }
 })
@@ -78,16 +78,22 @@ boldElem.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.fontWeight = "bold"
-    let cellobj = sheetdB[rid][cid]
-    cellobj.bold = true
 
-    buiarr.forEach(function(elem){
+
+    buiarr.forEach(function (elem) {
         elem.classList.remove("active-button")
     })
 
-    if(!boldElem.classList[2]){
+    if (!boldElem.classList[2]) {
         boldElem.classList.add("active-button")
+        cell.style.fontWeight = "bold"
+        let cellobj = sheetdB[rid][cid]
+        cellobj.bold = true
+    } else {
+        boldElem.classList.remove("active-button")
+        cell.style.fontWeight = "normal"
+        let cellobj = sheetdB[rid][cid]
+        cellobj.bold = false
     }
 
 
@@ -101,11 +107,11 @@ italicElem.addEventListener("click", function () {
     let cellobj = sheetdB[rid][cid]
     cellobj.italic = "italic"
 
-    buiarr.forEach(function(elem){
+    buiarr.forEach(function (elem) {
         elem.classList.remove("active-button")
     })
 
-    if(!italicElem.classList[2]){
+    if (!italicElem.classList[2]) {
         italicElem.classList.add("active-button")
     }
 
@@ -119,11 +125,11 @@ underlineElem.addEventListener("click", function () {
     let cellobj = sheetdB[rid][cid]
     cellobj.underline = "underline"
 
-    buiarr.forEach(function(elem){
+    buiarr.forEach(function (elem) {
         elem.classList.remove("active-button")
     })
 
-    if(!underlineElem.classList[2]){
+    if (!underlineElem.classList[2]) {
         underlineElem.classList.add("active-button")
     }
 })
@@ -179,7 +185,25 @@ for (let i = 0; i < Allcells.length; i++) {
         let cellobj = sheetdB[rid][cid]
         cellobj.value = cell.innerText
     })
+
+    Allcells[i].addEventListener("keydown", function (e) {
+        let cellsel = e.currentTarget
+        let height = cellsel.scrollHeight;
+        let address = curraddress.value;
+        let { cid, rid } = getRIdCIdfromAddress(address);
+        let entirerow = document.querySelectorAll(".inside-grid .row")[rid];
+        entirerow.style.height = height + "px";
+        let leftcol = document.querySelectorAll(".left-col .row")[rid];
+        leftcol.style.height = height + "px";
+
+        let obj = Allcells[i].getBoundingClientRect()
+        let theight = obj.height
+
+
+    })
 }
+
+
 
 function getRIdCIdfromAddress(address) {
     // A1

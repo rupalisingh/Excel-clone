@@ -1,8 +1,8 @@
 let top_row = document.querySelector(".top-row")
 let leftcol = document.querySelector(".left-col")
 let colstr = ""
-for (let i = 0; i < 26; i++) {
-    colstr += `<div class = "col">${String.fromCharCode(65 + i)}</div>`
+for (let k = 0; k < 26; k++) {
+    colstr += `<div class = "col">${String.fromCharCode(65 + k)}</div>`
 }
 
 top_row.innerHTML = colstr
@@ -30,7 +30,7 @@ grid.innerHTML = gridstr
 
 // get address of the selected grid
 let addressBar = document.querySelector("#address")
-let Allcells = document.querySelectorAll(".col")
+let Allcells = document.querySelectorAll(".row > .col")
 let celladdress = ""
 
 Allcells[0].click();

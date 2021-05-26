@@ -14,7 +14,7 @@ function currSheetDb() {
                 textcolor : "none",
                 fillcolor : "transparent",
                 value: "",
-                formula: ""
+                formula: "",
             }
             row.push(cell)
         }

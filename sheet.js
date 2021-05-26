@@ -1,4 +1,4 @@
-
+let rows = document.querySelectorAll(".row")
 let formulabar = document.querySelector("#formula")
 let addsheetBtn = document.querySelector(".fa-plus")
 let sheetlist = document.querySelector(".sheet-list")
@@ -71,16 +71,16 @@ function initui(){
         Allcells[i].style.color = "none"
         Allcells[i].style.backgroundColor = "transparent"
         Allcells[i].innerText = ""
-        formula.value = ""
-
+        formula.value = ""  
     }
+
 }
 
 
 function setUI(sheetdB){
     for(let i = 0; i < sheetdB.length; i++){
         for(let j = 0; j < sheetdB[i].length; j++){
-            let cell = document.querySelector(`.col[rid="${i}"][cid="${j}"]`);
+            let cell = document.querySelector(`.row > .col[rid="${i}"][cid="${j}"]`);
             let {bold, italic, underline, fontFamily, fontSize, halign, textcolor, fillcolor, value} = sheetdB[i][j]
             let {formula} = sheetdB[0][0]
             formulabar.value = formula
