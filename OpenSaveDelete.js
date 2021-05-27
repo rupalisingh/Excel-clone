@@ -52,12 +52,26 @@ DeleteFile.addEventListener("click", deleteSheet)
 function deleteSheet() {
     deletePopup()
 
-    let deleteclicked = document.querySelector(".Delete")
+    let deleteclicked = document.querySelector(".modal.Delete")
     let closeclicked = document.querySelector(".Close")
     let modalContainer = document.querySelector(".modal-container")
 
     deleteclicked.addEventListener("click", function() {
+        let sheetlist = document.querySelectorAll(".sheet")
+        if (sheetlist.length == 1) {
+            alert("Cannot delete the Only sheet left in workbook")
+        } else {
+            for (let i = 0; i < sheetlist.length; i++) {
+                if (sheetlist[i].classList.contains("active-sheet")) {
+                    sheetlist[i].classList.remove("active-sheet")
+                    sheetlist[i].remove()
+                    sheetlist[i - 1].classList.add("active-sheet")
+                    body.removeChild(modalContainer)
+                    break
 
+                }
+            }
+        }
 
     })
 
