@@ -25,6 +25,7 @@ body {
 .menu-icon>* {
     background-color: rgb(23, 155, 23);
     color: whitesmoke;
+    cursor: pointer;
 }
 
 #sheetName {
@@ -232,6 +233,7 @@ input[type="color"] {
 
 .sheet-list {
     display: flex;
+    cursor: default;
 }
 
 .sheet {
