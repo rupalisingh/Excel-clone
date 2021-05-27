@@ -1,89 +1,85 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
-    margin : 0px;
+body {
+    margin: 0px;
 }
 
-.menu-bar{
+.menu-bar {
     height: 60px;
     background-color: rgb(23, 155, 23);
     display: flex;
 }
 
-
-.menu-icon{
-    min-width : 100px;
+.menu-icon {
+    min-width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     font-size: 15px;
     margin-top: 6px;
-    
 }
 
-.menu-icon > *{
+.menu-icon>* {
     background-color: rgb(23, 155, 23);
     color: whitesmoke;
-
 }
 
-
-#sheetName{
+#sheetName {
     height: 23px;
     margin-top: 8px;
 }
 
-.excel-text{
+.excel-text {
     width: 7%;
     display: flex;
     color: rgb(252, 246, 246);
     align-items: center;
-    font-size:x-large;
+    font-size: x-large;
     font-family: "Lucida Console", "Courier New", monospace;
     text-align: left;
     margin-left: 20px;
 }
 
-.toolbar{
+.toolbar {
     height: 55px;
     background-color: rgb(216, 207, 207);
     display: flex;
     flex-direction: row;
 }
 
-.toolbar > *{
+.toolbar>* {
     height: 100%;
     min-width: 10%;
 }
 
-.text-formatting{
-    width : 16%;
+.text-formatting {
+    width: 16%;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     align-items: center;
     border-right: 1px solid rgb(138, 138, 138);
-
 }
-.text-formatting > *{
+
+.text-formatting>* {
     height: 30%;
 }
 
-#input-font{
+#input-font {
     font-size: 12px;
 }
 
-.biu{
+.biu {
     width: 10%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.biu > *{
+.biu>* {
     width: 24px;
     height: 25px;
     display: flex;
@@ -91,25 +87,25 @@ body{
     align-items: center;
 }
 
-.color-picker{
-    width : 10%;
+.color-picker {
+    width: 10%;
     border-left: 1px solid rgb(138, 138, 138);
-    border-right: 1px solid rgb(138, 138, 138);    
+    border-right: 1px solid rgb(138, 138, 138);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 input[type="color"] {
-	-webkit-appearance: none;
-	border: none;
-	width: 25px;
-	height: 19px;
+    -webkit-appearance: none;
+    border: none;
+    width: 25px;
+    height: 19px;
     padding: 0;
     background-color: transparent;
 }
 
-.alignment{
+.alignment {
     display: flex;
     flex-direction: row;
     border-right: 1px solid rgb(138, 138, 138);
@@ -118,53 +114,50 @@ input[type="color"] {
     align-items: center;
 }
 
-.alignment > *{
+.alignment>* {
     width: 24px;
     height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.formula-container{
-    background-color:rgb(189, 181, 181);
+.formula-container {
+    background-color: rgb(189, 181, 181);
     height: 35px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 
-#address{
+#address {
     height: 20px;
     min-width: 10%;
 }
 
-#formula{
-    min-width:80% ;
+#formula {
+    min-width: 80%;
 }
 
-.grid-container{
+.grid-container {
     height: calc(100vh - (60px + 55px + 35px + 30px));
-    overflow : auto;
+    overflow: auto;
     position: relative;
 }
 
-
-.block{
+.block {
     height: 30px;
     width: 27px;
-    background-color:rgb(216, 207, 207) ;
+    background-color: rgb(216, 207, 207);
     position: absolute;
     border: 1px solid rgb(179, 176, 176);
     z-index: 100;
 }
 
-.top-row{
+.top-row {
     height: 30px;
-    background-color:rgb(216, 207, 207) ;
+    background-color: rgb(216, 207, 207);
     position: absolute;
     display: flex;
     align-items: center;
@@ -173,12 +166,12 @@ input[type="color"] {
     z-index: 100;
 }
 
-.top-row .col p{
+.top-row .col p {
     width: 100%;
     text-align: center;
 }
 
-.col{
+.col {
     min-width: 75px;
     max-width: 75px;
     min-height: 20px;
@@ -186,7 +179,7 @@ input[type="color"] {
     border-left: 1px solid rgb(179, 176, 176);
 }
 
-.left-col{
+.left-col {
     width: 27px;
     background-color: rgb(216, 207, 207);
     position: absolute;
@@ -198,10 +191,9 @@ input[type="color"] {
     z-index: 20;
 }
 
-
-.row{
+.row {
     height: 20px;
-    border-bottom : 1px solid rgb(179, 176, 176);
+    border-bottom: 1px solid rgb(179, 176, 176);
     display: flex;
     font-size: small;
     width: 100%;
@@ -209,26 +201,26 @@ input[type="color"] {
     align-items: center;
 }
 
-.inside-grid{
+.inside-grid {
     position: absolute;
-    top:30px;
+    top: 30px;
     left: 25px;
 }
 
-
-.row > .col{
+.row>.col {
     word-break: break-all;
 }
 
-.add-sheet-container{
+.add-sheet-container {
     height: 30px;
     background-color: rgb(216, 207, 207);
     display: flex;
     align-items: center;
 }
-.fa-plus{
+
+.fa-plus {
     height: 100%;
-    width : 60px;
+    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,11 +230,11 @@ input[type="color"] {
     margin-right: 15px;
 }
 
-.sheet-list{
+.sheet-list {
     display: flex;
 }
 
-.sheet{
+.sheet {
     height: 28px;
     width: 55px;
     display: flex;
@@ -253,23 +245,48 @@ input[type="color"] {
     margin-right: 20px;
 }
 
-
-.active-button
-{
+.active-button {
     background-color: rgb(173, 173, 173);
     border: 1.5px solid darkgray;
     width: 24px;
-    color:rgb(23, 155, 23)
+    color: rgb(23, 155, 23)
 }
 
-.active-sheet{
+.active-sheet {
     background-color: whitesmoke;
     box-shadow: 1px 1px 1px 1px green;
 }
-
 
 .hide_file {
     z-index: 1000;
     opacity: 0;
     cursor: pointer;
+}
+
+.modal-container {
+    position: absolute;
+    margin-top: -424px;
+    margin-left: calc(100vw - 65%);
+    height: calc(100vh - 80%);
+    width: calc(100vw - 75%);
+    background-color: rgb(223, 170, 72);
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 1px 1px 1px 1px rgb(224, 198, 175);
+}
+
+.modal {
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 45px;
+    width: 30%;
+    font-family: cursive;
+    background-color: rgb(255, 255, 255);
+}
+
+.inside-message {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: cursive;
+    text-align: center;
 }
