@@ -32,7 +32,7 @@ leftalign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.backgroundColor = "red"
+    cell.style.textAlign = "left"
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
     })
@@ -46,7 +46,7 @@ rightalign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.backgroundColor = "green"
+    cell.style.textAlign = "right"
 
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
@@ -61,7 +61,7 @@ centeralign.addEventListener("click", function () {
     let address = curraddress.value
     let { cid, rid } = getRIdCIdfromAddress(address)
     let cell = document.querySelector(`.col[rid= "${rid}"][cid = "${cid}"]`)
-    cell.style.backgroundColor = "blue"
+    cell.style.textAlign = "center"
 
     alignarr.forEach(function (align) {
         align.classList.remove("active-button")
@@ -207,6 +207,17 @@ for (let i = 0; i < Allcells.length; i++) {
         setFormulaBarUI(rid, cid)
     })
 }
+
+gridContainer.addEventListener("scroll", function () {
+    // console.log(e);
+    let top = gridContainer.scrollTop;
+    let left = gridContainer.scrollLeft;
+    console.log(left);
+    topLeftBlock.style.top = top + "px";
+    topRow.style.top = top + "px";
+    leftCol.style.left = left + "px";
+    topLeftBlock.style.left = left + "px";
+})
 
 
 function setFormulaBarUI(rid,cid) {

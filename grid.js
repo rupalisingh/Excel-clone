@@ -1,8 +1,10 @@
+let gridContainer = document.querySelector(".grid-container")
 let top_row = document.querySelector(".top-row")
 let leftcol = document.querySelector(".left-col")
+let block = document.querySelector(".block")
 let colstr = ""
 for (let k = 0; k < 26; k++) {
-    colstr += `<div class = "col">${String.fromCharCode(65 + k)}</div>`
+    colstr += `<div class = "col"><p>${String.fromCharCode(65 + k)}</p></div>`
 }
 
 top_row.innerHTML = colstr
@@ -10,7 +12,7 @@ top_row.innerHTML = colstr
 let str = ""
 
 for (let i = 0; i < 100; i++) {
-    str += `<div class = "row">${i + 1}</div>`
+    str += `<div class = "row">${i + 1}</p></div>`
 }
 
 leftcol.innerHTML = str
@@ -47,20 +49,12 @@ for (let i = 0; i < Allcells.length; i++) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+gridContainer.addEventListener("scroll", function () {
+    // console.log(e);
+    let top = gridContainer.scrollTop;
+    let left = gridContainer.scrollLeft;
+    block.style.top = top + "px";
+    block.style.left = left + "px";
+    top_row.style.top = top + "px";
+    leftcol.style.left = left + "px";
+})
