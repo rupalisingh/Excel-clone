@@ -7,43 +7,48 @@ body{
 }
 
 .menu-bar{
-    height: 44px;
+    height: 60px;
     background-color: rgb(23, 155, 23);
     display: flex;
 }
 
-.menu-bar > *{
-    height: 100%;
-    width: 20%;
-
-}
 
 .menu-icon{
-    min-width : 300px;
+    min-width : 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     font-size: 15px;
+    margin-top: 6px;
     
 }
+
 .menu-icon > *{
     background-color: rgb(23, 155, 23);
     color: whitesmoke;
 
 }
 
+
+#sheetName{
+    height: 23px;
+    margin-top: 8px;
+}
+
 .excel-text{
+    width: 7%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     color: rgb(252, 246, 246);
+    align-items: center;
     font-size:x-large;
     font-family: "Lucida Console", "Courier New", monospace;
+    text-align: left;
+    margin-left: 20px;
 }
 
 .toolbar{
-    height: 70px;
+    height: 55px;
     background-color: rgb(216, 207, 207);
     display: flex;
     flex-direction: row;
@@ -142,7 +147,7 @@ input[type="color"] {
 }
 
 .grid-container{
-    height: calc(100vh - (44px + 70px + 35px + 30px));
+    height: calc(100vh - (60px + 55px + 35px + 30px));
     overflow : auto;
     position: relative;
 }
@@ -260,4 +265,11 @@ input[type="color"] {
 .active-sheet{
     background-color: whitesmoke;
     box-shadow: 1px 1px 1px 1px green;
+}
+
+
+.hide_file {
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
 }

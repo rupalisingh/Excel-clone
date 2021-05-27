@@ -201,23 +201,11 @@ for (let i = 0; i < Allcells.length; i++) {
     })
 
     Allcells[i].addEventListener("click", function() {
-        console.log('clicked')
         let address = curraddress.value;
         let { cid, rid } = getRIdCIdfromAddress(address);
         setFormulaBarUI(rid, cid)
     })
 }
-
-gridContainer.addEventListener("scroll", function () {
-    // console.log(e);
-    let top = gridContainer.scrollTop;
-    let left = gridContainer.scrollLeft;
-    console.log(left);
-    topLeftBlock.style.top = top + "px";
-    topRow.style.top = top + "px";
-    leftCol.style.left = left + "px";
-    topLeftBlock.style.left = left + "px";
-})
 
 
 function setFormulaBarUI(rid,cid) {
